@@ -1,0 +1,45 @@
+<div class="container">
+    <div class="row">
+        <div class="page-header">
+            <h1>ÜRÜN <small>Ürün Ekle</small></h1>
+        </div>
+        <div class="col-lg-10">
+            <form name="FrmAddProduct" class="form-horizontal" role="form" ng-submit="saveProduct()" novalidate>
+                <div class="form-group">
+                    <label for="urunisim" class="col-sm-2 control-label">İsim</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" name="urunisim" id="urunisim" placeholder="Ürün İsim..." ng-model="product.name" required autofocus="true">
+                        <div class="alert alert-danger alert-dismissable" ng-show="FrmAddProduct.urunisim.$dirty && FrmAddProduct.urunisim.$error.required">
+                            Ürün ismi giriniz
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="urunAciklama" class="col-sm-2 control-label">Açıklama</label>
+                    <div class="col-sm-10">
+                        <textarea class="form-control" rows="3" name="urunAciklama" id="urunAciklama" placeholder="Ürün Açıklama..." ng-model="product.aciklama" required></textarea>
+                        <div class="alert alert-danger alert-dismissable" ng-show="FrmAddProduct.urunAciklama.$dirty && FrmAddProduct.urunAciklama.$error.required">
+                            Ürün açıklaması giriniz
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputFile" class="col-sm-2 control-label">Resim</label>
+                    <div class="col-sm-10">
+                        <input class="btn btn-warning" type="file" name="inputFile" id="inputFile" eovalid-file required ng-file-select="onFileSelect($files)" ng-model="products.resim">
+                        <div class="alert alert-danger alert-dismissable" ng-show="FrmAddProduct.inputFile.$dirty && FrmAddProduct.inputFile.$error.required">
+                            Ürün resmi seçiniz
+                        </div>
+                    </div>
+                </div>
+                <hr/>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button type="submit" class="btn btn-success btn-lg" ng-disabled="FrmAddProduct.$invalid">Ürün Ekle</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>

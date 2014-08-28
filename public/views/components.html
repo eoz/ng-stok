@@ -1,0 +1,118 @@
+<div class="container products">
+    <div class="starter-template">
+
+        <!-- Three columns of text below the carousel -->
+        <div class="row">
+            <div class="jumbotron" ng-show="{{ komponentList.length == 0 }}">
+                <h1>Ertunç Özcan Medikal Depo Stok Yönetimi</h1>
+
+                <p>Sistemde Yüklü Komponent Bulanmamaktadır. Yeni Komponent eklemek için Komponent Ekle'ye basınız.</p>
+
+                <p><a class="btn btn-primary btn-lg" ng-href="#addcomponent" role="button">Komponent Ekle</a></p>
+            </div>
+
+            <!--
+            <div class="col-lg-3" ng-repeat="komponent in komponentList">
+                <a ng-href="#component/{{ komponent.id }}"><img class="img-thumbnail img-responsive" width="200px" height="300px"  ng-src="../images/komponents/{{ komponent.resim }}" alt="{{ komponent.isim }}"></a>
+                <h2>{{ komponent.isim }}</h2>
+                <p>{{ komponent.aciklama }}</p>
+            </div><!-- /.col-lg-3 -->
+
+        </div>
+        <!-- /.row -->
+
+        <div class="row" ng-hide="{{ komponentList.length == 0 }}">
+            <div class="row asagibosluk">
+                <div class="col-lg-3 col-centered">
+                    <div class="center-block">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Komponent İsmi Ara..." id="query"
+                                   name="query"
+                                   value="" ng-model="query">
+
+                            <div class="input-group-btn">
+                                <button type="submit" class="btn btn-default"><span
+                                        class="glyphicon glyphicon-search"></span></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!--<div class="row" ng-repeat="komponent in komponentList | eopartition:4">-->
+            <!--<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12" ng-repeat="item in komponent | filter : { isim : query }">-->
+                <!--<a ng-href="#component/{{ item.id }}"><img class="img-thumbnail img-responsive" width="200px"-->
+                                                           <!--height="300px" ng-src="../images/komponents/{{ item.resim }}"-->
+                                                           <!--alt="{{ item.isim }}"></a>-->
+
+                <!--<h2>{{ item.isim }}</h2>-->
+
+                <!--<p>{{ item.aciklama }}</p>-->
+            <!--</div>-->
+        <!--</div>-->
+
+        <div ng-repeat="komponent in komponentList| filter : { isim : query } | eopartition:4">
+            <div class="row">
+                <div ng-if="(komponentList|filter:{isim:query}).length < 4">
+                    <div ng-repeat="item in komponent">
+                        <div class="col-md-{{ 12 / (komponentList|filter:{isim:query}).length }}">
+                            <a ng-href="#component/{{ item.id }}"><img class="img-thumbnail img-responsive" width="200px"
+                                                                       height="200px" ng-src="../images/komponents/{{ item.resim }}"
+                                                                       alt="{{ item.isim }}"></a>
+
+                            <h2>{{ item.isim }} <span class="badge" style="vertical-align: middle">{{ item.stokAdet }}</span></h2>
+
+                            <p>{{ item.aciklama }}</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div ng-if="(komponentList|filter:{isim:query}).length >= 4">
+                    <div ng-repeat="item in komponent">
+                        <div class="col-md-3">
+                            <a ng-href="#component/{{ item.id }}"><img class="img-thumbnail img-responsive" width="200px"
+                                                                       height="300px" ng-src="../images/komponents/{{ item.resim }}"
+                                                                       alt="{{ item.isim }}"></a>
+
+                            <h2>{{ item.isim }} <span class="badge" style="vertical-align: middle">{{ item.stokAdet }}</span></h2>
+
+                            <p>{{ item.aciklama }}</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+        <!--<input type="text" class="form-control" placeholder="Komponent İsmi Ara..." id="q"-->
+               <!--name="q" value=""-->
+               <!--ng-model="q">-->
+
+        <!--<div ng-show="true" ng-repeat="row in matrix | filter : q | eopartition : 4">-->
+            <!--<div class="row">-->
+                <!--<div ng-if=" (matrix|filter:q).length  < 4">-->
+                    <!--<div ng-repeat="item in row">-->
+                        <!--<div class="col-md-{{ 12 / ((matrix|filter:q).length) }}">{{ item }}</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div ng-if="(matrix|filter:q).length  >= 4">-->
+                    <!--<div ng-repeat="item in row">-->
+                        <!--<div class="col-md-3">{{ item }}</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+
+        <!--</div>-->
+
+    </div>
+</div><!-- /.container -->
+
+
+
+
+
+
+

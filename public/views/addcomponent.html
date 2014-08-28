@@ -1,0 +1,114 @@
+<div class="container">
+    <div class="row">
+        <div class="page-header">
+            <h1>KOMPONENT <small>Komponent Ekle</small></h1>
+        </div>
+        <div class="col-lg-10">
+            <form name="FrmAddComponent" class="form-horizontal" role="form" ng-submit="saveKomponent()" novalidate>
+                <div class="form-group">
+                    <label for="komponentisim" class="col-sm-2 control-label">İsim</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" name="komponentisim" id="komponentisim" placeholder="Komponent İsim..." ng-model="komponent.name" required autofocus="true">
+                        <div class="alert alert-danger alert-dismissable" ng-show="FrmAddComponent.komponentisim.$dirty && FrmAddComponent.komponentisim.$error.required">
+                            Komponent ismi giriniz
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="komponentAciklama" class="col-sm-2 control-label">Açıklama</label>
+                    <div class="col-sm-10">
+                        <textarea class="form-control" rows="3" name="komponentAciklama" id="komponentAciklama" placeholder="Komponent Açıklama..." ng-model="komponent.aciklama" required></textarea>
+                        <div class="alert alert-danger alert-dismissable" ng-show="FrmAddComponent.komponentAciklama.$dirty && FrmAddComponent.komponentAciklama.$error.required">
+                            Komponent açıklaması giriniz
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="komponentFirma" class="col-sm-2 control-label">Firma</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" rows="3" name="komponentFirma" id="komponentFirma" placeholder="Komponent Firma..." ng-model="komponent.firma" required>
+                        <div class="alert alert-danger alert-dismissable" ng-show="FrmAddComponent.komponentFirma.$dirty && FrmAddComponent.komponentFirma.$error.required">
+                            Komponent Firmasını giriniz
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="komponentFirmaYetkili" class="col-sm-2 control-label">Firma Yetkilisi</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" rows="3" name="komponentFirmaYetkili" id="komponentFirmaYetkili" placeholder="Komponent Firma Yetkilisi..." ng-model="komponent.firmaYetkili" required>
+                        <div class="alert alert-danger alert-dismissable" ng-show="FrmAddComponent.komponentFirmaYetkili.$dirty && FrmAddComponent.komponentFirmaYetkili.$error.required">
+                            Firma Yetkilisi Giriniz
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="komponentFirmaYetkili" class="col-sm-2 control-label">Firma Yetkilisi İletişim</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" rows="3" name="komponentFirmaYetkiliIletisim" id="komponentFirmaYetkiliIletisim" placeholder="Komponent Firma Yetkilisi İletişim Adresi" ng-model="komponent.firmaYetkiliIletisim" required>
+                        <div class="alert alert-danger alert-dismissable" ng-show="FrmAddComponent.komponentFirmaYetkiliIletisim.$dirty && FrmAddComponent.komponentFirmaYetkiliIletisim.$error.required">
+                            Firma Yetkilisi İletişim Adresi Giriniz
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="komponentStokAdet" class="col-sm-2 control-label">Stok Adet</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" rows="3" name="komponentStokAdet" id="komponentStokAdet" placeholder="Komponent Stok Adet..." ng-model="komponent.stokAdet" required>
+                        <div class="alert alert-danger alert-dismissable" ng-show="FrmAddComponent.komponentStokAdet.$dirty && FrmAddComponent.komponentStokAdet.$error.required">
+                            Stok Miktarını Giriniz
+                        </div>
+                    </div>
+                </div>
+
+                <!--<div class="form-group">-->
+                    <!--<label for="komponentFiyat" class="col-sm-2 control-label">Fiyat</label>-->
+                    <!--<div class="col-sm-10">-->
+                        <!--<input type="text" class="form-control" rows="3" name="komponentFiyat" id="komponentFiyat" placeholder="Komponent Fiyat..." ng-model="komponent.fiyat" required>-->
+                        <!--<div class="alert alert-danger alert-dismissable" ng-show="FrmAddComponent.komponentFiyat.$dirty && FrmAddComponent.komponentFiyat.$error.required">-->
+                            <!--Fiyatı Giriniz-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+
+                <div class="form-group">
+                    <label for="ureticiKodu" class="col-sm-2 control-label">Üretici Kodu</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" rows="3" name="ureticiKodu" id="ureticiKodu" placeholder="Komponent Üretici Kodu..." ng-model="komponent.ureticiKodu" required>
+                        <div class="alert alert-danger alert-dismissable" ng-show="FrmAddComponent.ureticiKodu.$dirty && FrmAddComponent.ureticiKodu.$error.required">
+                            Üretici kodunu giriniz
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
+
+                <div class="form-group">
+                    <label for="inputFile" class="col-sm-2 control-label">Resim</label>
+                    <div class="col-sm-10">
+                        <input class="btn btn-warning" type="file" name="inputFile" id="inputFile" eovalid-file required ng-file-select="onFileSelect($files)" ng-model="komponents.resim">
+                        <div class="alert alert-danger alert-dismissable" ng-show="FrmAddComponent.inputFile.$dirty && FrmAddComponent.inputFile.$error.required">
+                            Komponent resmi seçiniz
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <hr/>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button type="submit" class="btn btn-success btn-lg" ng-disabled="FrmAddComponent.$invalid">Komponent Ekle</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>

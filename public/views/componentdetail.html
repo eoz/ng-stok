@@ -1,0 +1,198 @@
+<div class="container">
+    <div class="productdetail">
+        <!-- Three columns of text below the carousel -->
+        <div class="row">
+            <div class="col-lg-10">
+
+                <div class="col-sm-4 col-md-5" style="text-align: center">
+                    <img class="img-thumbnail img-responsive"
+                         style="max-height:290px; min-height: 290px; min-width: 250px; max-width: 250px;"
+                         ng-src="../images/komponents/{{ komponent.resim }}"
+                         alt="{{ komponent.isim }}">
+                    <accordion>
+                        <accordion-group heading="Komponent Açıklama">
+                            {{ komponent.aciklama }}
+                        </accordion-group>
+                    </accordion>
+
+
+                </div>
+                <div class="col-sm-6 col-sm-offset-2 col-md-6 col-md-offset-0">
+                    <div class="page-header">
+                        <h1>
+                            <small>Komponent İşlemleri - {{ komponent.isim }}</small>
+                        </h1>
+                    </div>
+
+                    <!--
+                    <p>
+                        <button type="button" class="btn btn-primary btn-block efe" ng-click="changeImg()">
+                            <span class="glyphicon glyphicon-pencil"></span> Resmi Değiştir
+                        </button>
+                    </p>
+                    -->
+
+                    <p>
+                        <button type="button" class="btn btn-primary btn-block" ng-click="duzenle(komponent)">
+                            <span class="glyphicon glyphicon-pencil"></span> Düzenle
+                        </button>
+                    </p>
+
+
+                    <p>
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <h3>
+                                Stok Adedi
+                            </h3>
+                        </div>
+                        <div class="col-xs-6 col-md-6">
+                            <h3><span class="label label-success">{{ komponent.stokAdet }}</span></h3>
+                        </div>
+                    </div>
+                    </p>
+
+                    <p>
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <h3>
+                                Mevcut İhtiyaç
+                            </h3>
+                        </div>
+                        <div class="col-xs-6 col-md-6">
+                            <h3><span class="label label-success">{{ mevcutIhtiyac() }}</span></h3>
+                        </div>
+                    </div>
+                    </p>
+
+                    <p>
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <h4>
+                                Son Fiyat
+                            </h4>
+                        </div>
+                        <div class="col-xs-6 col-md-6">
+                            <div ng-repeat="cp in komponent.componentPrices | orderBy : 'fiyatTarihi' : true | limitTo : 1">
+                                <h4><span class="label label-default">{{ cp.fiyat | currency : cp.paraBirimi }}</span></h4>
+                            </div>
+                        </div>
+                    </div>
+                    </p>
+
+                    <p>
+                    <div class="row">
+                        <form name="FrmAddComponentToStok">
+                            <div class="col-xs-6">
+                                <button type="button" class="btn btn-warning btn-block"
+                                        ng-disabled="FrmAddComponentToStok.$invalid" ng-click="addComponent(komponent, addcomponentstok)">
+                                    <span class="glyphicon glyphicon-shopping-cart"></span>
+                                    Stoğa Ekle
+                                    <span class="glyphicon glyphicon-new-window pull-right"></span>
+                                </button>
+                            </div>
+                            <div class="col-xs-6 col-md-6">
+                                <input type="number" min="{{ mevcutIhtiyac() }}" name="addcomponentstok" id="addcomponentstok" ng-model="addcomponentstok" style="width: 100%; vertical-align: middle" required/>
+                            </div>
+                        </form>
+                    </div>
+                    </p>
+
+                    <p>
+                    <div class="row">
+                        <form name="FrmSubtractComponentFromStok">
+                            <div class="col-xs-6">
+                                <button type="button" class="btn btn-danger btn-block"
+                                        ng-disabled="{{ komponent.stokAdet == 0 }} || FrmSubtractComponentFromStok.$invalid" ng-click="subtractComponent(komponent, subtractkomponent)">
+                                    <span class="glyphicon glyphicon-minus"></span>
+                                    Stok'tan Çıkar
+                                    <span class="glyphicon glyphicon-new-window pull-right"></span>
+                                </button>
+                            </div>
+                            <div class="col-xs-6 col-md-6">
+                                <input type="number" min="1" name="subtractkomponent" id="subtractkomponent" ng-model="subtractkomponent" style="width: 100%; vertical-align: middle" required/>
+                            </div>
+                        </form>
+                    </div>
+                    </p>
+
+
+
+
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-lg-10" style="text-align: left">
+            <div class="page-header">
+                <h1>
+                    <small>Kullanılan Cihazlar</small>
+                </h1>
+            </div>
+            <!-- {{ product | json }} -->
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th></th>
+                        <th>İsim</th>
+                        <th>Kullanılan Adet</th>
+                    </tr>
+                    </thead>
+                    <tbody ng-repeat="product in komponent.products">
+                    <tr ng-click="goToProductPage(product)" style="cursor: pointer">
+                        <td style="vertical-align: middle">{{ $index + 1 }}</td>
+                        <td style="vertical-align: middle"><img style="height: 40px; margin: 0px" ng-src="../images/products/{{product.resim}}"
+                                 title="{{product.isim}}"
+                                 alt="{{product.isim}}"/></td>
+                        <td style="vertical-align: middle">{{ product.isim }}</td>
+                        <td>{{ product.productComponent.adet }}</td>
+                    </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+
+        <div class="col-lg-10" style="text-align: left">
+            <div class="page-header">
+                <h1>
+                    <small>Stok Geçmişi</small>
+                </h1>
+            </div>
+            <!-- {{ product | json }} -->
+            <div class="table-responsive">
+                <table class="table table-hover table-striped">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Önceki</th>
+                        <th>Eklenen / Çıkarılan</th>
+                        <th>Sonraki</th>
+                        <th>Açıklama</th>
+                        <th>Tarih</th>
+                        <th>Fiyat</th>
+                    </tr>
+                    </thead>
+                    <tbody ng-repeat="orderhistory in komponent.orderHistories | orderBy : 'id' : true">
+                    <tr>
+                        <td>{{ $index + 1 }}</td>
+                        <td>{{ orderhistory.once }}</td>
+                        <td>{{ orderhistory.sonra - orderhistory.once }}</td>
+                        <td>{{ orderhistory.sonra }}</td>
+                        <td ><div popover="{{ orderhistory.aciklama }}" popover-trigger="mouseenter">{{ orderhistory.aciklama | eotruncate:90:'...' }}</div></td>
+                        <td>{{ orderhistory.updatedAt | date:'medium' }}</td>
+                        <td>{{ orderhistory.componentPrice.fiyat }} {{ orderhistory.componentPrice.paraBirimi }}</td>
+
+                    </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+</div><!-- /.container -->

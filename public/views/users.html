@@ -1,0 +1,52 @@
+<div class="container products">
+    <div class="starter-template">
+        <!-- Three columns of text below the carousel -->
+        <div class="row">
+            <section>
+                <ol class="breadcrumb" style="text-align: left">
+                    <li><a href="#/">Ürünler</a></li>
+                    <li class="active">Kullanıcılar</li>
+                </ol>
+            </section>
+            <div class="page-header">
+                <h1>Kullanıcı Listesi
+                </h1>
+            </div>
+
+            <div class="table-responsive table-condensed table-hover" style="text-align: left">
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th></th>
+                        <th>İsim</th>
+                        <th>E-posta</th>
+                        <th>Rol</th>
+                        <th>Pozisyon</th>
+                        <th>Son Giriş</th>
+                        <th>Üyelik Tarihi</th>
+                        <th>Onaylama</th>
+                    </tr>
+                    </thead>
+                    <tbody ng-repeat="user in userdetail">
+                    <tr ng-class="{ success : user.isApproved == true, danger : user.isApproved == false}">
+                        <td>{{ $index + 1 }}</td>
+                        <td ng-bind="user.isim">{{ user.isim }}</td>
+                        <td ng-bind="user.email"></td>
+                        <td ng-bind="user.rol"></td>
+                        <td ng-bind="user.firmaPozisyon"></td>
+                        <td ng-bind="user.lastLogin | date:'medium'"></td>
+                        <td ng-bind="user.createdAt | date"></td>
+                        <td>
+                            <button popover="{{ user.email }} adresine mail yollanacak" popover-trigger="mouseenter" ng-show="!user.isApproved" class="btn btn-success btn-xs" ng-click="approveUser( user )"><span class="glyphicon glyphicon-envelope"></span></button>
+                        </td>
+
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+
+            <!-- /.row -->
+        </div>
+    </div>
+</div><!-- /.container -->

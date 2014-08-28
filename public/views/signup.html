@@ -1,0 +1,147 @@
+<div class="container products">
+    <div class="starter-template">
+        <!-- Three columns of text below the carousel -->
+        <div class="row">
+            <div class="page-header">
+                <h1>Üye Ol
+                </h1>
+            </div>
+
+            <!-- Hata Gosterme -->
+            <!-- <alert ng-repeat="alert in newuser.alerts" type="alert.type">{{ alert.messageContent }}</alert> -->
+            <div class="error-container">
+                <div class="alert alert-danger" ng-show="newUserFrm.inputName.$dirty && newUserFrm.inputName.$invalid">
+                    <div class="error" ng-show="newUserFrm.inputName.$error.required">
+                        İsim giriniz
+                    </div>
+                    <div class="error" ng-show="newUserFrm.inputName.$error.minlength">
+                        İsim 3 karakterden az olamaz
+                    </div>
+                    <div class="error" ng-show="newUserFrm.inputName.$error.maxlength">
+                        İsim 20 karakterden fazla olamaz
+                    </div>
+                </div>
+
+                <div class="alert alert-danger" ng-show="newUserFrm.inputEmail.$dirty && newUserFrm.inputEmail.$invalid">
+                    <div class="error" ng-show="newUserFrm.inputEmail.$error.required">
+                        E-mail giriniz
+                    </div>
+                    <div class="error" ng-show="newUserFrm.inputEmail.$error.email">
+                        Geçerli bir e-mail giriniz
+                    </div>
+                    <div class="error" ng-show="newUserFrm.inputEmail.$error.unique">
+                        Bu e-mail daha önce alınmış, Farklı bir e-mail giriniz
+                    </div>
+                </div>
+
+                <div class="alert alert-danger" ng-show="newUserFrm.inputPassword.$dirty && newUserFrm.inputPassword.$invalid">
+                    <div class="error" ng-show="newUserFrm.inputPassword.$error.required">
+                        Şifre giriniz
+                    </div>
+                    <div class="error" ng-show="newUserFrm.inputPassword.$error.minlength">
+                        Şifre 5 karakterden az olamaz
+                    </div>
+                    <div class="error" ng-show="newUserFrm.inputPassword.$error.maxlength">
+                        Şifre 20 karakterden fazla olamaz
+                    </div>
+                </div>
+
+                <div class="alert alert-danger" ng-show="newUserFrm.inputFirmaPozisyon.$dirty && newUserFrm.inputFirmaPozisyon.$invalid">
+                    <div class="error" ng-show="newUserFrm.inputFirmaPozisyon.$error.required">
+                        Firmadaki Pozisyonunuzu giriniz
+                    </div>
+                    <div class="error" ng-show="newUserFrm.inputFirmaPozisyon.$error.maxlength">
+                        Firma Pozisyonu 50 karakterden fazla olamaz
+                    </div>
+                </div>
+
+
+            </div>
+            <!-- HATA GOSTERME BITER -->
+
+            <form class="form-horizontal" role="form" name="newUserFrm" novalidate>
+                <div class="form-group">
+                    <label for="inputName" class="col-sm-4 control-label">İsim</label>
+
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control" name="inputName" id="inputName" placeholder="İsminiz"
+                               ng-model="signUpForm.Name" ng-minlength="3" ng-maxlength="20" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputEmail" class="col-sm-4 control-label">E-mail</label>
+
+                    <div class="col-sm-4">
+                        <input type="email" class="form-control" name="inputEmail" id="inputEmail" placeholder="E-mail adresiniz"
+                               ng-model="signUpForm.Email" ensure-unique-email="{{ signUpForm.Email }}" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputPassword" class="col-sm-4 control-label">Şifre</label>
+
+                    <div class="col-sm-4">
+                        <input type="password" class="form-control" name="inputPassword" id="inputPassword" placeholder="Şifreniz"
+                               ng-model="signUpForm.password" ng-minlength="5" ng-maxlength="20" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputFirmaPozisyon" class="col-sm-4 control-label">Firma Pozisyon</label>
+
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control" name="inputFirmaPozisyon" id="inputFirmaPozisyon" placeholder="Firmadaki Pozisyonunuz"
+                               ng-model="signUpForm.firmaPozisyon" ng-maxlength="50" required>
+                    </div>
+                </div>
+                <!--<div class="form-group">-->
+                    <!--<label for="inputPassword2" class="col-sm-4 control-label">Şifre Tekrar</label>-->
+
+                    <!--<div class="col-sm-4">-->
+                        <!--<input type="password" class="form-control" name="inputPassword2" id="inputPassword2" placeholder="Şifre tekrar"-->
+                               <!--ng-model="signUpForm.password2" ng-minlength="5" ng-maxlength="20" required>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <div class="form-group">
+                    <div class="col-sm-offset-3 col-sm-6">
+                        <button type="submit" class="btn btn-success" ng-disabled="newUserFrm.$invalid" ng-click="signUp()">
+                            Üye Ol
+                        </button>
+
+                    </div>
+                </div>
+            </form>
+            <hr/>
+            <h4 style="margin-left: 10px">
+                Üye Girişi -> <a ng-href="#/login">Üye Girişi</a>
+            </h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <!-- /.row -->
+        </div>
+    </div>
+</div><!-- /.container -->

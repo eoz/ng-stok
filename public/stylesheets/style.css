@@ -1,0 +1,214 @@
+a {
+    color: #00B7FF;
+}
+
+body {
+    padding-top: 50px;
+}
+
+.starter-template {
+    padding: 40px 15px;
+    text-align: center;
+}
+
+.productdetail {
+    padding: 40px 15px;
+}
+
+.productdetail img {
+    margin-bottom: 20px;
+}
+
+.loginpage {
+    padding : 50px;
+}
+
+.asagibosluk {
+    margin-bottom: 10px;
+}
+
+.products .asagibosluk {
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+/*
+.eomenu ul.nav li.dropdown:hover > ul.dropdown-menu {
+    display: block;
+    margin: 0;
+}
+*/
+
+.col-centered {
+    float: none;
+    margin: 0 auto;
+}
+
+a.hovertext {
+    position: relative;
+    width: 200px;
+    text-decoration: none !important;
+    text-align: center;
+}
+
+a.hovertext:after {
+    content: attr(title);
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    padding: 0.5em 20px;
+    width: 200px;
+    background: rgba(0, 0, 0, 0.8);
+    text-decoration: none !important;
+    color: #fff;
+    opacity: 0;
+    -webkit-transition: 0.5s;
+    -moz-transition: 0.5s;
+    -o-transition: 0.5s;
+    -ms-transition: 0.5s;
+}
+
+a.hovertext:hover:after, a.hovertext:focus:after {
+    opacity: 1.0;
+}
+
+.multiple-select-wrapper {
+    width: 100%;
+    position: relative;
+}
+
+.multiple-select-wrapper .selected-items-box {
+    box-shadow: inset 1px -1px 5px 0 #CCCCCC;
+    -webkit-box-shadow: inset 1px -1px 5px 0 #CCCCCC;
+    -moz-box-shadow: inset 1px -1px 5px 0 #CCCCCC;
+    -o-box-shadow: inset 1px -1px 5px 0 #CCCCCC;
+    cursor: pointer;
+    border: solid 1px #C7C6C7;
+    padding: 5px;
+    height: 30px;
+    background-color: #fff;
+    border-radius: 5px;
+    -mox-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -o-border-radius: 5px;
+}
+
+.selected-items-box .items-list {
+    list-style-type: none;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+.selected-items-box .items-list li {
+    display: inline;
+}
+
+.selected-items-box .items-list li img {
+    display: inline;
+    padding-left: 10px;
+    height: 18px;
+}
+
+.selected-items-box .items-list li img {
+    font-size: 20px;
+}
+
+.multiple-select-wrapper .list {
+    display: none;
+    height: 120px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    border-left: solid 1px #C7C6C7;
+    border-right: solid 1px #C7C6C7;
+    border-bottom: solid 1px #C7C6C7;
+    z-index: 10;
+    position: absolute;
+    width: 99%;
+    border-radius: 5px;
+    -mox-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -o-border-radius: 5px;
+}
+
+.list .items-list {
+    list-style-type: none;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+.list .items-list li {
+    margin: 0;
+    width: 100%;
+    padding: 0;
+    border-bottom: solid 1px #C7C6C7;
+    padding: 5px;
+    background-color: #fff;
+}
+
+.list .items-list li input {
+    padding-left: 10px;
+}
+
+.list .items-list li img {
+    margin-top: 10px;
+    padding-left: 10px;
+    padding-right: 6px;
+    height: 20px;
+}
+
+.list .items-list li span {
+    color: #4A4A4A;
+    font-size: 14px;
+}
+
+.list .items-list li span.number {
+    float: right;
+}
+
+.list .items-list div.searchbox {
+    background-color: #fff;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-bottom: solid 1px #C7C6C7;
+    width: 100%;
+    text-align: center;
+    /*z-index: 9999;*/
+}
+
+.list .items-list li.btn {
+    text-align: left;
+}
+
+.dropdown-icon {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    margin-top: -8px;
+    width: 16px;
+    height: 16px;
+    background-image: url("http://s18.postimage.org/ht23xn8id/menu_arrow_down.png");
+    background-repeat: no-repeat;
+    background-position: 0 center;
+}
+
+/* row icinde esit buyuklukte colonlar icin */
+.equal, .equal > div[class*='col-'] {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    flex: 1 0 auto;
+}
+
+/*ng-view page enter-leave animation*/
+.animateView.ng-enter{
+    transition:0.75s;
+    opacity: 0;
+}
+.animateView.ng-leave{
+    transition:0.75s;
+    opacity: 1;
+}

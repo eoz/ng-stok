@@ -1,0 +1,94 @@
+<div class="container products">
+    <div class="starter-template">
+        <!-- Three columns of text below the carousel -->
+        <div class="row">
+            <div class="jumbotron" ng-show="{{ productList.length == 0 }}">
+                <h1>Ertunç Özcan Medikal Depo Stok Yönetimi</h1>
+
+                <p>Sistemde Yüklü Ürün Bulanmamaktadır. Yeni Ürün eklemek için Ürün Ekle'ye basınız.</p>
+
+                <p><a class="btn btn-primary btn-lg" ng-href="#addproduct" role="button">Ürün Ekle</a></p>
+            </div>
+        </div>
+        <div class="row">
+            <div ng-hide="{{ productList.length == 0 }}">
+                <div class="row asagibosluk">
+                    <div class="col-lg-3 col-centered">
+                        <div class="center-block">
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="Ürün İsmi Ara..." id="query"
+                                       name="query"
+                                       value="" ng-model="query">
+
+                                <div class="input-group-btn">
+                                    <button type="submit" class="btn btn-default"><span
+                                            class="glyphicon glyphicon-search"></span></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <!--<div class="row">-->
+            <!--<div class="col-sm-4 asagibosluk" ng-repeat="product in productList | filter : { isim : query }">-->
+                <!--<a ng-href="#product/{{ product.id }}" class="hovertext" title="{{ product.isim }}"><img-->
+                        <!--class="img-thumbnail img-responsive"-->
+                        <!--style="max-height:220px; min-height: 220px; min-width: 200px; max-width: 200px;"-->
+                        <!--ng-src="../images/products/{{ product.resim }}"-->
+                        <!--alt="{{ product.isim }}"></a>-->
+
+                <!--<h2>{{ product.isim }}</h2>-->
+
+                <!--<p>{{ product.aciklama | eotruncate:120:'...' }}</p>-->
+            <!--</div>-->
+            <!--&lt;!&ndash; /.col-lg-4 &ndash;&gt;-->
+        <!--</div>-->
+
+
+
+        <div ng-repeat="product in productList| filter : { isim : query } | eopartition:3">
+            <div class="row">
+                <div ng-if="(productList|filter:{isim:query}).length < 3">
+                    <div ng-repeat="item in product">
+                        <div class="col-md-{{ 12 / (productList|filter:{isim:query}).length }}">
+                            <a ng-href="#product/{{ item.id }}" class="hovertext" title="{{ item.isim }}"><img
+                                    class="img-thumbnail img-responsive"
+                                    style="max-height:220px; min-height: 220px; min-width: 200px; max-width: 200px;"
+                                    ng-src="../images/products/{{ item.resim }}"
+                                    alt="{{ item.isim }}"></a>
+
+                            <h2>{{ item.isim }}</h2>
+
+                            <p>{{ item.aciklama | eotruncate:120:'...' }}</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div ng-if="(productList|filter:{isim:query}).length >= 3">
+                    <div ng-repeat="item in product">
+                        <div class="col-md-4">
+                            <a ng-href="#product/{{ item.id }}" class="hovertext" title="{{ item.isim }}"><img
+                                    class="img-thumbnail img-responsive"
+                                    style="max-height:220px; min-height: 220px; min-width: 200px; max-width: 200px;"
+                                    ng-src="../images/products/{{ item.resim }}"
+                                    alt="{{ item.isim }}"></a>
+
+                            <h2>{{ item.isim }}</h2>
+
+                            <p>{{ item.aciklama | eotruncate:120:'...' }}</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+        <!-- /.row -->
+    </div>
+</div>
+</div><!-- /.container -->

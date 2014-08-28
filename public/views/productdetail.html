@@ -1,0 +1,201 @@
+<div class="container">
+    <div class="productdetail">
+        <!-- Three columns of text below the carousel -->
+        <div class="row">
+            <div class="col-lg-10">
+
+                <div class="col-sm-4 col-md-5" style="text-align: center">
+                    <img class="img-thumbnail img-responsive"
+                         style="max-height:290px; min-height: 290px; min-width: 250px; max-width: 250px;"
+                         ng-src="../images/products/{{ product.resim }}"
+                         alt="{{ product.isim }}">
+                    <accordion>
+                        <accordion-group heading="Ürün Açıklama">
+                            {{ product.aciklama }}
+                        </accordion-group>
+                    </accordion>
+
+
+                </div>
+                <div class="col-sm-6 col-sm-offset-2 col-md-6 col-md-offset-0">
+                    <div class="page-header">
+                        <h1>
+                            <small>Ürün İşlemleri - {{ product.isim }}</small>
+                        </h1>
+                    </div>
+                    <p>
+                        <button type="button" class="btn btn-primary btn-block" ng-click="duzenle(product)">
+                            <span class="glyphicon glyphicon-pencil"></span> Düzenle
+                        </button>
+                    </p>
+
+                    <p>
+
+
+                    <div class="row">
+                        <form name="FrmTakeOrder">
+                            <div class="col-xs-6">
+                                <button type="button" class="btn btn-warning btn-block"
+                                        ng-disabled="FrmTakeOrder.$invalid || isSaving " ng-click="takeOrder()">
+                                    <span class="glyphicon glyphicon-shopping-cart"></span> Sipariş Al
+                                </button>
+                            </div>
+                            <div class="col-xs-6 col-md-6">
+                                <input type="number" min="1" name="siparissayi" id="siparissayi" ng-model="siparissayi" style="width: 100%" required/>
+                            </div>
+                        </form>
+                    </div>
+                    </p>
+
+                    <p>
+
+                    <div class="row">
+                        <div class="col-xs-4 col-sm-4 col-md-5">
+                            <label class="text-success">
+                                <span class="glyphicon glyphicon-plus"></span><span class="text-success hidden-xs">Komponent Ekle: </span>
+                            </label>
+                        </div>
+                        <div class="col-xs-8 col-sm-8 col-md-7">
+                            <div class="multiple-select-wrapper">
+                                <div class="selected-items-box">
+                                    <span class="dropdown-icon"></span>
+                                    <ul class="items-list">
+                                        <li ng-repeat="komponent in Komponents | filter: getSelectedItemsOnly| limitTo: 5">
+                                            <img ng-src="../images/komponents/{{komponent.resim}}"
+                                                 title="{{komponent.isim}}"
+                                                 alt="{{komponent.isim}}"/>
+                                        </li>
+                                <span ng-show="(Komponents | filter: getSelectedItemsOnly).length > 4"
+                                      title="Hepsini gör">...</span>
+                                    </ul>
+                                </div>
+                                <div class="list">
+                                    <ul class="items-list">
+                                        <div class="searchbox">
+                                            <span class="glyphicon glyphicon-search"></span><input type="text"
+                                                                                                   placeholder="Komponent ara..."
+                                                                                                   ng-model="srckom"/>
+                                        </div>
+
+                                        <li ng-repeat="komponent in Komponents | filter : srckom"
+                                            class="btn btn-success" ng-click="alert(komponent)">
+                                            <!-- <input type="checkbox" ng-model="komponent.selected"/> -->
+                                            <img ng-src="../images/komponents/{{komponent.resim}}"
+                                                 title="{{komponent.isim}}"
+                                                 alt="{{komponent.isim}}"/>
+                                            <span>{{komponent.isim}}</span>
+                                            <!-- <span class="number"><input ng-disabled="! komponent.selected" ng-model="komponent.komadet"  type="number" style="width: 50px"></span> -->
+                                        </li>
+
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-lg-10" style="text-align: left">
+            <div class="page-header">
+                <h1>
+                    <small style="color: #880000">Mevcut Siparişler</small>
+                </h1>
+            </div>
+            <!-- {{ product | json }} -->
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Sipariş Tarihi</th>
+                        <th>Sipariş Miktarı</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody ng-repeat="orders in product.orders | filter : { isComplete : false } | orderBy : 'id' : true">
+                    <tr ng-click="showOrder(orders, true)" style="cursor: pointer">
+                        <td>{{ $index + 1 }}</td>
+                        <td>{{ orders.siparisTarihi | date:'medium' }}</td>
+                        <td>{{ orders.siparisMiktari }}</td>
+                        <td><span class="glyphicon glyphicon-new-window"></span></td>
+                    </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="col-lg-10" style="text-align: left">
+            <div class="page-header">
+                <h1>
+                    <small style="color: #219161">Önceki Siparişler</small>
+                </h1>
+            </div>
+            <!-- {{ product | json }} -->
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Sipariş Tarihi</th>
+                        <th>Sipariş Miktarı</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody ng-repeat="orders in product.orders | filter : { isComplete : true }">
+                    <tr ng-click="showOrder(orders, false)" style="cursor: pointer">
+                        <td>{{ $index + 1 }}</td>
+                        <td>{{ orders.siparisTarihi | date:'medium' }}</td>
+                        <td>{{ orders.siparisMiktari }}</td>
+                        <td><span class="glyphicon glyphicon-new-window"></span></td>
+                    </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+
+
+        <div class="col-lg-10" style="text-align: left">
+            <div class="page-header">
+                <h1>
+                    <small>Komponent Listesi</small>
+                </h1>
+            </div>
+            <!-- {{ product | json }} -->
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>İsim</th>
+                        <th>Adet / Ürün</th>
+                        <th>Ted. Firma</th>
+                        <th>Ted. Firma Yetkilisi</th>
+                        <th>Stok</th>
+                    </tr>
+                    </thead>
+                    <tbody ng-repeat="komponent in product.components">
+                    <tr>
+                        <td>{{ $index + 1 }}</td>
+                        <td><a ng-href="#component/{{ komponent.id }}" class="btn btn-primary" role="button">{{
+                            komponent.isim }}</a></td>
+                        <td>{{ komponent.productComponent.adet }}</td>
+                        <td>{{ komponent.firma }}</td>
+                        <td>{{ komponent.firmaYetkilisi }}</td>
+                        <td>{{ komponent.stokAdet }}</td>
+
+                    </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+</div><!-- /.container -->
