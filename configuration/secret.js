@@ -1,1 +1,1 @@
-exports.secretToken = 'kimbilebilirkibunu';
+exports.secretToken = '****************';
