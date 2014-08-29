@@ -4,7 +4,7 @@ var mailConfig = function(){
         service : 'Gmail',
         transport : 'SMTP',
         user : 'eomedikal@gmail.com',
-        pass : 'ertmeds0'
+        pass : '***********'
     }
 }
 
