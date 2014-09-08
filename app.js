@@ -10,15 +10,12 @@ var productRoute = require('./routes/productRoute');
 var komponentRoute = require('./routes/komponentRoute');
 var orderRoute = require('./routes/orderRoute');
 var userRoute = require('./routes/userRoute');
-//var sequelize = require('./models').sequelize;
 var expressJwt = require('express-jwt');
 var jwt = require('jsonwebtoken');
 var secret = require('./configuration/secret');
 
 var Sequelize = require('sequelize');
 var Promise = require('bluebird');
-
-//var abc = require('./utils/sendmail');
 
 var app = express();
 
@@ -84,7 +81,7 @@ app.delete('/order/:orderid', orderRoute.cancelOrderDetailByOrderId);
 
 db
     .sequelize
-    .sync({ force: false })
+    .sync({ force: true })
     .complete(function (err) {
         if (err) {
             throw err[0]
@@ -767,6 +764,7 @@ db
 //                            } )
 //                    })
 //            })
+
 
             http.createServer(app).listen(app.get('port'), function () {
                 console.log('Express server listening on port ' + app.get('port'));

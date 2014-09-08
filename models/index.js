@@ -2,7 +2,7 @@ var fs        = require('fs')
     , path      = require('path')
     , Sequelize = require('sequelize')
     , lodash    = require('lodash')
-    , sequelize = new Sequelize('eopm', 'root', '', {
+    , sequelize = new Sequelize('eopm', 'eostok', 'ertmedst0', {
         define : {
             charset : 'utf8',
             collate : 'utf8_turkish_ci'
